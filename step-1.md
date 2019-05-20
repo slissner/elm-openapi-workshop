@@ -24,7 +24,8 @@ Now run `swagger project edit` to open the interactive swagger editor:
 
 ```bash
 cd server
-swagger project edit
+swagger project start # terminal 1
+swagger project edit # terminal 2
 ```
 
 * **Swagger Editor** lets you edit OpenAPI specifications in YAML inside your browser and to preview documentations in real time.
