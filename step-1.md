@@ -1,4 +1,4 @@
-# Step 1: Settings up a api.json OpenAPI 3 file
+# Step-1: Generating a swagger definition file for the backend
 
 ## Getting started
 
@@ -41,7 +41,7 @@ _"OpenAPI Specification (formerly Swagger Specification) is an API description f
 
 (See https://swagger.io/docs/specification/about/)
 
-# A word on the history of Swagger/OpenAPI
+## A word on the history of Swagger/OpenAPI
 
 The magnitude of concepts may be confusing in the beginning. Some remarks on the history of swagger/openAPI:
 
@@ -57,4 +57,6 @@ See also:
 * https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
 * https://angular.schule/blog/2018-06-swagger-codegen-is-now-openapi-generator
 
-## (Go to step 2)[step-2.md]
+## Continue
+
+[Go to step 2](step-2.md)
