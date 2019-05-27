@@ -1,3 +1,2 @@
-src/client/ext/*
 src/server-sdk/sdk/*
 src/server-sdk/swagger.yaml

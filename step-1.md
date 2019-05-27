@@ -6,6 +6,14 @@ First set up your workspace in the source folder.
 
 ```bash
 cd src
+
+# create an elm app with create-elm-app
+npm install create-elm-app -g
+create-elm-app client
+
+https://github.com/halfzebra/create-elm-app
+
+# set up sdk dir
 mkdir -p client client/ext/server-sdk
 ```
 
@@ -23,9 +31,14 @@ When asked for framework, let's choose `express`, as I assume it is widespread t
 Now run `swagger project edit` to open the interactive swagger editor:
 
 ```bash
+# server
 cd server
 swagger project start # terminal 1 – starts our backend
 swagger project edit # terminal 2 – starts our UI-editor
+
+# client
+cd client/
+elm-app start # terminal 3 - client app
 ```
 
 * **Swagger Editor** lets you edit OpenAPI specifications in YAML inside your browser and to preview documentations in real time.
