@@ -1,4 +1,4 @@
-# Step 2: Setting up our Client-SDK build-Script
+# Step 2: Setting up our SDK build-Script
 
 ## Folders
 

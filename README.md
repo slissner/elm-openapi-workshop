@@ -9,7 +9,8 @@ This short workshop outlines how to integrate APIs, specified with openAPI 3.0, 
 ## Contents
 
 * [Step-1: Generating a swagger definition file for the backend](step-1.md)
-* [Step-2: Setting up our Client-SDK build-Script](step-2.md)
+* [Step-2: Setting up our SDK build-Script](step-2.md)
+* [Step-3: Setting up the client code](step-3.md)
 
 ## Prerequisites
 
