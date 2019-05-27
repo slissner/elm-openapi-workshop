@@ -4,9 +4,9 @@ info:
   title: Hello World App
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -42,6 +42,43 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /insurances:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: insurances
+    post:
+      operationId: createInsurance
+      summary: Creates a new insurance.
+      parameters:
+        - in: body
+          name: insurance
+          schema:
+            $ref: '#/definitions/Insurance'
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/Insurance"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    get:
+      description: Returns insurances
+      # used as the method name of the controller
+      operationId: getInsurances
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            $ref: "#/definitions/Insurance"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -51,6 +88,15 @@ definitions:
       - message
     properties:
       message:
+        type: string
+  Insurance:
+    required:
+      - insuranceType
+      - provider
+    properties:
+      insuranceType:
+        type: string
+      provider:
         type: string
   ErrorResponse:
     required:

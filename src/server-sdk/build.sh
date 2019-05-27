@@ -20,13 +20,19 @@ cp ../server/api/swagger/swagger.yaml swagger.yaml
 
 for generator in "${GENERATORS[@]}"
 do
-    docker run --rm \
-                -v "$PWD:/local" \
-                openapitools/openapi-generator-cli:${OPEN_API_VERSION} generate \
-                    -i /local/swagger.json \
-                    -o "/local/$SDK_DIR/$generator" \
-                    -g "$generator" \
-                    --invoker-package "crm" \
-                    --additional-properties elmEnableCustomBasePaths=true \
-                    --additional-properties elmPrefixCustomTypeVariants=true
+  docker run --rm \
+              -v "$PWD:/local" \
+              openapitools/openapi-generator-cli:${OPEN_API_VERSION} generate \
+                  -i /local/swagger.yaml \
+                  -o "/local/$SDK_DIR/$generator" \
+                  -g "$generator" \
+                  --invoker-package "example" \
+                  --additional-properties elmEnableCustomBasePaths=true \
+                  --additional-properties elmPrefixCustomTypeVariants=true
 done
+
+# post processing
+eval "${ELM_FORMAT_CMD}"
+
+rm -rf ${TARGET_DIR:?}
+mv -f ${SDK_DIR:?}/elm/src ${TARGET_DIR:?}
