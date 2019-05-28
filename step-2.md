@@ -1,117 +1,39 @@
-# Step 2: Setting up our SDK build-Script
+# Introducing Swagger/OpenAPI
 
-## Folders
+As we have set up our tools, let's recap quickly some basic facts regarding swagger/OpenAPI
 
-Let's now create a new folder which will contain our build script for generating our sdk files.
+## OpenAPI 2.0/3.0
 
-```bash
-cd src
-mkdir server-sdk
+The swagger npm package still uses version 2.0 of OpenAPI. There already exists also a version 3.0. But for demo purposes, this should be fair enough.
 
-cd server-sdk
-touch build.sh
-chmod +x build.sh
-```
+Quick introduction for those who are not yet familiar with OpenAPI:
 
-## Configuration of the build script
+_"OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:"_
 
-Let's first introduce some safeguards for our generator script. Begin `build.sh` file with:
+(See https://swagger.io/docs/specification/about/)
 
-```bash
-#!/usr/bin/env bash
-set -euxo pipefail
+## A word on the history of Swagger/OpenAPI
 
-# Set working directory to script directory
-cd "$(dirname "$0")" || exit
-```
+The magnitude of concepts may be confusing in the beginning. Some remarks on the history of swagger/openAPI:
 
-We then add some environment variables to configurate our generator runs:
+* First rule of thumb: "Swagger is older than OpenAPI"
+* In 2015 since SmartBear Software donated the "Swagger Specification" to the OpenAPI Initiative – and renamed it from to "OpenAPI specification".
+* Second rule of thumb:
+  * **OpenAPI** = Specification
+  * **Swagger** = Tools for implementing the specification
+* Moreover, the **OpenAPI Initiative** involves more the 30 organizations from different areas of the tech world — including Microsoft, Google, IBM, and CapitalOne. Smartbear Software, which is the company that leads the development of the Swagger tools, is also a member of the OpenAPI Initiative, helping lead the evolution of the specification.
+* Finally, there are has been a community fork in 2018 of `Swagger Codegen` – which is called `OpenAPI Generator`. The latter we will use in this workshop. Note: The elm client code generator is actively developed for `OpenAPI Generator`, while `Swagger Codegen` has not seen any activity for about a year (as of May 2019).
 
-```bash
-OPEN_API_VERSION="v4.0.0"
-SDK_DIR="sdk"
-ELM_VERSION="0.19"
-ELM_FORMAT_CMD="npx elm-format --elm-version=$ELM_VERSION --yes $SDK_DIR/elm/src/*"
-GENERATORS=( elm )
-TARGET_DIR="../client/ext/server-sdk"
-```
+See also:
+* https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
+* https://angular.schule/blog/2018-06-swagger-codegen-is-now-openapi-generator
 
-We then start our build routine with the following commands.
-First,
-Second, we clear the build output directory, here `sdk`.
-Third, we copy the current built swagger.yaml file of our server into our
+## Swagger Editor vs Swagger UI
 
-```bash
-# build
+One hint: keep in mind, swagger-editor is not the same as swagger-ui:
 
-## TODO For your own project, you can build here a fresh version of swagger.yaml / swagger.json before copying it. For the sake of the tutorial, we skip this step.
-
-rm -rf ${SDK_DIR:?}/*
-cp ../server/api/swagger/swagger.yaml swagger.yaml
-```
-
-## Calling openapi-generator
-
-Being the central step, we now call openapi-generator. That will create later our SDK files, when we run `build.sh`.
-
-```bash
-for generator in "${GENERATORS[@]}"
-do
-    docker run --rm \
-                -v "$PWD:/local" \
-                openapitools/openapi-generator-cli:${OPEN_API_VERSION} generate \
-                    -i /local/swagger.yaml \
-                    -o "/local/$SDK_DIR/$generator" \
-                    -g "$generator" \
-                    --invoker-package "example" \
-                    --additional-properties elmEnableCustomBasePaths=true \
-                    --additional-properties elmPrefixCustomTypeVariants=true
-done
-```
-
-### Some observations:
-* Note here, that we are iterating over the array defined in **GENERATORS**. This is seriously cool! We can simply pick more languages from the [offical docs](https://github.com/OpenAPITools/openapi-generator#overview) for which we want to create Client-SDK code. Let's try that later, by adding `elixir` or `rust` or whatever language you like.
-* We rely on **docker for running openapi-generator**. There are also other ways running the tool, such as Maven Plugins, npm,... (see [Installation](https://github.com/OpenAPITools/openapi-generator#1---installation))
-* Parameters:
-  * `-i` input file, can also be URL
-  * `-o` output of our sdk files
-  * `-g` our current generator
-* Elm generator specific configuration:
-  * `--additional-properties elmEnableCustomBasePaths=true` lets you pass the `basePath` to our API with each request. Particuarly useful, if your api is running under various stages (like dev, staging, prod...)
-  * `--additional-properties elmPrefixCustomTypeVariants=true`, as the name suggests, a concrete custom type will be prefixed with its type (like `type Pets = PetsDOG | PetsCAT`)
-
-## The Elm Generator
-
-As we were talking about elm generator properties... Let's have a look at the generator code:
-
-* Elm-Generator Code https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/ElmClientCodegen.java
-* Elm Templates https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/elm
-
-## Post-processing
-
-Next we run `elm-format` and move our newly generated files to `TARGET_DIR` (after having cleaned up the old files).
-
-```bash
-eval "${ELM_FORMAT_CMD}"
-
-rm -rf ${TARGET_DIR:?}
-mv -f ${SDK_DIR:?}/elm/src ${TARGET_DIR:?}
-```
-
-## Run `build.sh`
-
-Give it a shot!
-
-```bash
-./build.sh
-```
-
-If everything worked fine, we just generated our first server-sdk code in the `client` folder – ready to use with elm for our client.
-
-## Exercises
-
-* Currently we are "just" generating `elm` code. Let's navigate to the openapi generator docs. By modifying `build.sh`, try to generate client code for another language, such as `elixir`, `rust` or whatever language you may prefer.
-* Navigate to the openapi-generator github repo. Try to get a quick overview of the openapi-generator implementation for elm. Especially check how decoders, encoders and types are assembled in the templates. See also the java file `ElmClientCodegen`. That may be useful to understand what is going on under the hood for code generation.
+* **Swagger Editor** lets you edit OpenAPI specifications in YAML inside your browser and to preview documentations in real time.
+* **Swagger UI** is a collection of HTML, Javascript, and CSS assets that dynamically generate beautiful documentation from an OAS-compliant API.
 
 ## Continue
 
