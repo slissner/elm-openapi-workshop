@@ -1,4 +1,4 @@
-# Introducing Swagger/OpenAPI
+# Introducing swagger/OpenAPI
 
 As we have set up our tools, let's recap quickly some basic facts regarding swagger/OpenAPI
 
