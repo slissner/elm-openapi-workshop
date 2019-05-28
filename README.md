@@ -22,4 +22,4 @@ This workshop outlines how to integrate APIs, specified with openAPI 2.0, and El
 
 ## Join the community
 
-We are present on #openapi in [elm slack](https://elmlang.herokuapp.com/)
+We are present in the channel #openapi and #munich on [elm slack](https://elmlang.herokuapp.com/)
