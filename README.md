@@ -14,6 +14,7 @@ This workshop outlines how to integrate APIs, specified with openAPI 2.0, and El
 
 ## Prerequisites
 
+* elm 0.19
 * NPM
 * Docker
 
