@@ -12,7 +12,7 @@ This workshop outlines how to integrate APIs, specified with openAPI 2.0, and El
 * [Step-2: Introducing Swagger/OpenAPI](step-2.md)
 * [Step-3: Enhancing the server with OpenAPI](step-3.md)
 * [Step-4: Setting up our SDK build-Script](step-4.md)
-* [Step-5: Setting up the client code](step-4.md)
+* [Step-5: Setting up the client code](step-5.md)
 
 ## Prerequisites
 
