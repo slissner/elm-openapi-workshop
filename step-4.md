@@ -111,8 +111,8 @@ If everything worked fine, we just generated our first server-sdk code in the `c
 
 ## Exercises
 
-* Currently we are "just" generating `elm` code. Let's navigate to the openapi generator docs to consult the list of available languages. By modifying `build.sh`, try to generate client code for another language, such as `elixir`, `rust` or whatever language you may prefer.
-* Navigate to the openapi-generator github repo. Try to get a quick overview of the openapi-generator implementation for elm. Especially check how decoders, encoders and types are assembled in the templates. See also the java file `ElmClientCodegen`. That may be useful to understand what is going on under the hood for code generation.
+1. Currently we are "just" generating `elm` code. Let's navigate to the openapi generator docs to consult the list of available languages. By modifying `build.sh`, try to generate client code for another language, such as `elixir`, `rust` or whatever language you may prefer.
+2. Navigate to the openapi-generator github repo. Try to get a quick overview of the openapi-generator implementation for elm. Especially check how decoders, encoders and types are assembled in the templates. See also the java file `ElmClientCodegen`. That may be useful to understand what is going on under the hood for code generation.
 
 ## Continue
 
