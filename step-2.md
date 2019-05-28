@@ -8,7 +8,7 @@ The swagger npm package still uses version 2.0 of OpenAPI. There already exists 
 
 Quick introduction for those who are not yet familiar with OpenAPI:
 
-_"OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:"_
+_"OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including: [...]"_
 
 (See https://swagger.io/docs/specification/about/)
 
@@ -16,8 +16,8 @@ _"OpenAPI Specification (formerly Swagger Specification) is an API description f
 
 The magnitude of concepts may be confusing in the beginning. Some remarks on the history of swagger/openAPI:
 
-* First rule of thumb: "Swagger is older than OpenAPI"
-* In 2015 since SmartBear Software donated the "Swagger Specification" to the OpenAPI Initiative – and renamed it from to "OpenAPI specification".
+* First rule of thumb: _"Swagger is older than OpenAPI"_
+* In 2015 SmartBear Software – the creator of swagger – donated the "Swagger Specification" to the OpenAPI Initiative – and renamed it from to "OpenAPI specification".
 * Second rule of thumb:
   * **OpenAPI** = Specification
   * **Swagger** = Tools for implementing the specification
