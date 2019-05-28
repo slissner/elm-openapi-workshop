@@ -14,7 +14,7 @@
 
 Store the data you receive in-memory in a list.
 
-3. Add a second endpoint to that controller: `GET /insurances` that receives the insurances stored in-memory.
+3. Add a second endpoint to that controller: `GET /insurances` that returns the insurances stored in-memory.
 
 Some help:
 * Keep in mind that we use OAS 2.0 with node swagger package (not the newer version 3.0!)
@@ -27,7 +27,6 @@ Some help:
   * https://swagger.io/docs/specification/2-0/basic-structure/
   * https://swagger.io/docs/specification/2-0/describing-request-body/
   * https://swagger.io/docs/specification/2-0/describing-responses/
-  * https://swagger.io/specification/v2/
 
 ## Continue
 

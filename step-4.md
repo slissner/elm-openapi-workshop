@@ -36,10 +36,10 @@ GENERATORS=( elm )
 TARGET_DIR="../client/ext/server-sdk"
 ```
 
-We then start our build routine with the following commands.
-First,
-Second, we clear the build output directory, here `sdk`.
-Third, we copy the current built swagger.yaml file of our server into our
+We then start our build routine with the following commands:
+* First, we normally build a fresh copy of a swagger definition file (swagger.yml/swagger.json)
+* Second, we clear the build output directory, here `sdk`.
+* Third, we copy the current built swagger.yaml file of our server into our directory
 
 ```bash
 # build
@@ -69,7 +69,8 @@ do
 done
 ```
 
-### Some observations:
+## Some observations:
+
 * Note here, that we are iterating over the array defined in **GENERATORS**. This is seriously cool! We can simply pick more languages from the [offical docs](https://github.com/OpenAPITools/openapi-generator#overview) for which we want to create Client-SDK code. Let's try that later, by adding `elixir` or `rust` or whatever language you like.
 * We rely on **docker for running openapi-generator**. There are also other ways running the tool, such as Maven Plugins, npm,... (see [Installation](https://github.com/OpenAPITools/openapi-generator#1---installation))
 * Parameters:
@@ -110,7 +111,7 @@ If everything worked fine, we just generated our first server-sdk code in the `c
 
 ## Exercises
 
-* Currently we are "just" generating `elm` code. Let's navigate to the openapi generator docs. By modifying `build.sh`, try to generate client code for another language, such as `elixir`, `rust` or whatever language you may prefer.
+* Currently we are "just" generating `elm` code. Let's navigate to the openapi generator docs to consult the list of available languages. By modifying `build.sh`, try to generate client code for another language, such as `elixir`, `rust` or whatever language you may prefer.
 * Navigate to the openapi-generator github repo. Try to get a quick overview of the openapi-generator implementation for elm. Especially check how decoders, encoders and types are assembled in the templates. See also the java file `ElmClientCodegen`. That may be useful to understand what is going on under the hood for code generation.
 
 ## Continue
