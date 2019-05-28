@@ -21,7 +21,7 @@ The magnitude of concepts may be confusing in the beginning. Some remarks on the
 * Second rule of thumb:
   * **OpenAPI** = Specification
   * **Swagger** = Tools for implementing the specification
-* Moreover, the **OpenAPI Initiative** involves more the 30 organizations from different areas of the tech world — including Microsoft, Google, IBM, and CapitalOne. Smartbear Software, which is the company that leads the development of the Swagger tools, is also a member of the OpenAPI Initiative, helping lead the evolution of the specification.
+* Moreover, the **OpenAPI Initiative** involves more than 30 organizations from different areas of the tech world — including Microsoft, Google, IBM, and CapitalOne. Smartbear Software, which is the company that leads the development of the Swagger tools, is also a member of the OpenAPI Initiative, helping to lead the evolution of the specification.
 * Finally, there are has been a community fork in 2018 of `Swagger Codegen` – which is called `OpenAPI Generator`. The latter we will use in this workshop. Note: The elm client code generator is actively developed for `OpenAPI Generator`, while `Swagger Codegen` has not seen any activity for about a year (as of May 2019).
 
 See also:
